@@ -236,22 +236,13 @@ class Game():
                                 player.alive = False
 
                 def gameControler(self):
+                    speedUp = 0
+                    if kills % 10 == 0:
+                        speedUp += 1
                     if kills >= 10 and self.direction == right:
-                        enemy.x += 1.5
+                        enemy.x += speedUp
                     elif kills >= 10 and self.direction == left:
-                        enemy.x -= 1.5   
-                    if kills >= 20 and self.direction == right:
-                        enemy.x += 2
-                    elif kills >= 20 and self.direction == left:
-                        enemy.x -= 2
-                    if kills >= 30 and self.direction == right:
-                        enemy.x += 1.5
-                    elif kills >= 30 and self.direction == left:
-                        enemy.x -= 1.5 
-                    if kills >= 40 and self.direction == right:
-                        enemy.x += 1
-                    elif kills >= 40 and self.direction == left:
-                        enemy.x -= 1      
+                        enemy.x -= speedUp
                 
                 def off_screen(self):
                     return not (self.x >= -80 and self.x <= larguraTela + 30)
@@ -325,7 +316,7 @@ class Game():
                         enemies.remove(enemy)
                     if enemy.health <= 0:
                         kills += 1
-                        if kills % 10 == 0:
+                        if kills % 20 == 0:
                             player.lives += 1
 
                 # Draw game in windows
