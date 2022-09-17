@@ -38,7 +38,7 @@ class Game():
 
             pygame.init()
             CLOCK = pygame.time.Clock()
-            FPS = 45
+            FPS = 55
             BLACK = (0, 0, 0)
 
             # # # MUSICA -----------------------------------------------------------------------------------
@@ -238,7 +238,7 @@ class Game():
                 def gameControler(self):
                     speedUp = 0
                     if kills % 10 == 0:
-                        speedUp += 1
+                        speedUp += 1.2
                     if kills >= 10 and self.direction == right:
                         enemy.x += speedUp
                     elif kills >= 10 and self.direction == left:
