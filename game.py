@@ -12,7 +12,7 @@ class Game():
         self.DISPLAY_W, self.DISPLAY_H = 720, 480 # Tamanho da tela
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
-        self.font_name = 'fonte/PressStart2P-vaV7.ttf'
+        self.font_name = 'assets/fonte/PressStart2P-vaV7.ttf'
         #self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255) #Definindo cores
         self.main_menu = MainMenu(self) #Classes
@@ -32,7 +32,7 @@ class Game():
             metadeAltura = alturaTela / 2
             areaTela = larguraTela * alturaTela
             tela = pygame.display.set_mode((larguraTela, alturaTela))
-            bg = pygame.image.load("Cenario/cenario.gif")
+            bg = pygame.image.load("assets/Cenario/cenario.gif")
             background = pygame.transform.scale(bg, (larguraTela, alturaTela))
             pygame.display.set_caption("War C-19")
 
@@ -42,22 +42,22 @@ class Game():
             BLACK = (0, 0, 0)
 
             # # # MUSICA -----------------------------------------------------------------------------------
-            pygame.mixer.music.load('Musicas/start.wav')
+            pygame.mixer.music.load('assets/Musicas/start.wav')
             pygame.mixer.music.play(-1)
 
             # # # PERSONAGEM ---------------------------------------------------------------------------------
             scale_hero=[100,100] 
-            left = [pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Tras1.png')),(scale_hero)),
-                    pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Tras2.png')),(scale_hero)),
-                    pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Tras3.png')),(scale_hero)),
-                    pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Tras4.png')),(scale_hero))
+            left = [pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Tras1.png')),(scale_hero)),
+                    pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Tras2.png')),(scale_hero)),
+                    pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Tras3.png')),(scale_hero)),
+                    pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Tras4.png')),(scale_hero))
                     ]
-            right = [pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Frente1.png')),(scale_hero)),
-                     pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Frente2.png')),(scale_hero)),
-                     pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Frente3.png')),(scale_hero)),
-                     pygame.transform.scale(pygame.image.load(os.path.join('Personagens', 'Frente4.png')),(scale_hero))
+            right = [pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Frente1.png')),(scale_hero)),
+                     pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Frente2.png')),(scale_hero)),
+                     pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Frente3.png')),(scale_hero)),
+                     pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Personagens', 'Frente4.png')),(scale_hero))
                      ]
-            bullet_img = pygame.transform.scale(pygame.image.load(os.path.join('Bullets', 'bullet.png')), (21, 21))
+            bullet_img = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Bullets', 'bullet.png')), (21, 21))
             x = 100
             y = 395
             radius = 80
@@ -115,7 +115,7 @@ class Game():
 
                 def jump_motion(self, userInput):
                     if userInput[pygame.K_UP] and self.jump is False:
-                        jumpvar = pygame.mixer.Sound('Musicas/jump.wav')
+                        jumpvar = pygame.mixer.Sound('assets/Musicas/jump.wav')
                         jumpvar.play()
                         self.jump = True
                     if self.jump:
@@ -141,7 +141,7 @@ class Game():
                     self.hit()
                     self.cooldown()
                     if (userInput[pygame.K_f] and self.cool_down_count == 0):
-                        shootvar=pygame.mixer.Sound('Musicas/shot.wav')
+                        shootvar=pygame.mixer.Sound('assets/Musicas/shot.wav')
                         shootvar.play()
                         bullet = Bullet(self.x, self.y, self.direction())
                         self.bullets.append(bullet)
@@ -179,15 +179,15 @@ class Game():
 
             # INIMIGO ----------------------------------------------------------------------------------------
             scale_enimy=[100,100]
-            left_enemy = [pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'T1.png')),(scale_enimy)),
-                          pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'T2.png')),(scale_enimy)),
-                          pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'T3.png')),(scale_enimy)),
-                          pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'T4.png')),(scale_enimy))
+            left_enemy = [pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'T1.png')),(scale_enimy)),
+                          pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'T2.png')),(scale_enimy)),
+                          pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'T3.png')),(scale_enimy)),
+                          pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'T4.png')),(scale_enimy))
                           ]
-            right_enemy = [pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'F1.png')),(scale_enimy)),
-                           pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'F2.png')),(scale_enimy)),
-                           pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'F3.png')),(scale_enimy)),
-                           pygame.transform.scale(pygame.image.load(os.path.join('Inimigos', 'F4.png')),(scale_enimy))
+            right_enemy = [pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'F1.png')),(scale_enimy)),
+                           pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'F2.png')),(scale_enimy)),
+                           pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'F3.png')),(scale_enimy)),
+                           pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Inimigos', 'F4.png')),(scale_enimy))
                            ]
 
             class Enemy:
@@ -262,7 +262,7 @@ class Game():
                 # Player Health
                 if player.alive == False:
                     tela.fill((0, 0, 0))
-                    font = pygame.font.Font('fonte/PressStart2P-vaV7.ttf', 32)
+                    font = pygame.font.Font('assets/fonte/PressStart2P-vaV7.ttf', 32)
                     text = font.render('GAME OVER! Press R to restart', True, (138, 47, 47))
                     textRect = text.get_rect()
                     textRect.center = (metadeLargura, metadeAltura)
@@ -271,7 +271,7 @@ class Game():
                         player.alive = True
                         player.lives = 1
                         player.health = 40
-                font = pygame.font.Font('fonte/PressStart2P-vaV7.ttf', 27)
+                font = pygame.font.Font('assets/fonte/PressStart2P-vaV7.ttf', 27)
                 text = font.render('Kills: ' + str(kills) + '  Lives: ' + str(player.lives), True, (189, 178, 209))
                 tela.blit(text, (230, 20))
 
